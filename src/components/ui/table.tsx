@@ -2,7 +2,7 @@
 import { useState, useMemo } from 'react';
 import { ChevronUp, ChevronDown, ChevronsUpDown } from 'lucide-react';
 
-interface TableColumn {
+export interface TableColumn {
   key: string;
   header: string;
   width?: string;
@@ -10,6 +10,7 @@ interface TableColumn {
   render?: (value: any, row: any) => React.ReactNode;
   sortable?: boolean;
   sortType?: 'string' | 'number' | 'date';
+  sortKey?: string
 }
 
 interface TableProps {

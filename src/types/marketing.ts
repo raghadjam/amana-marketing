@@ -168,3 +168,46 @@ export interface ApiResponse {
   message?: string;
   data?: MarketingData;
 }
+
+export interface AggregatedDemographicGroup {
+  ageGroup: string;
+  gender: 'Male' | 'Female' | string; 
+  impressions: number;
+  clicks: number;
+  conversions: number;
+  spend: number;
+  revenue: number;
+  ctr: number;
+  conversionRate: number;
+}
+
+export interface AggregatedWeeklyPerformance {
+  weekStart: string;
+  weekEnd: string;
+  impressions: number;
+  clicks: number;
+  conversions: number;
+  spend: number;
+  revenue: number;
+  // Derived metrics
+  ctr: number;
+  conversionRate: number;
+}
+
+export interface AggregatedRegionalPerformance {
+    region: string;
+    country: string;
+    impressions: number;
+    clicks: number;
+    conversions: number;
+    spend: number;
+    revenue: number;
+    ctr: number;
+    conversionRate: number;
+    roas: number;
+    cpa: number;
+    cpc: number;
+    
+    latitude: number; 
+    longitude: number; 
+}

@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
+
 import { 
   Home, 
   Menu, 
@@ -11,6 +12,7 @@ import {
   Users,
   Calendar,
   MapPin,
+  Monitor,
   BarChart3
 } from 'lucide-react';
 
@@ -28,11 +30,13 @@ interface NavbarProps {
 
 // Marketing dashboard navigation items
 const navigationItems: NavigationItem[] = [
+  
   { id: "overview", name: "Overview", icon: Home, href: "/" },
   { id: "campaign-view", name: "Campaign View", icon: Target, href: "/campaign-view" },
   { id: "demographic-view", name: "Demographic View", icon: Users, href: "/demographic-view" },
   { id: "weekly-view", name: "Weekly View", icon: Calendar, href: "/weekly-view" },
   { id: "region-view", name: "Region View", icon: MapPin, href: "/region-view" },
+  { id: "device-view", name: "Device View", icon: Monitor, href: "/device-view" }, 
 ];
 
 export function Navbar({ className = "" }: NavbarProps) {
