@@ -1,5 +1,3 @@
-// src/components/ui/bubble-map.tsx
-
 "use client";
 import React from 'react';
 import { MapContainer, TileLayer, CircleMarker, Popup } from 'react-leaflet';
@@ -9,10 +7,10 @@ import { Globe } from 'lucide-react';
 export interface BubbleMapDataPoint {
   region: string;
   country: string;
-  value: number; // Metric driving bubble size
+  value: number; 
   color: string;
-  latitude: number;  // NEW: Real latitude
-  longitude: number; // NEW: Real longitude
+  latitude: number;  
+  longitude: number; 
 }
 
 export interface BubbleMapProps {
@@ -30,7 +28,6 @@ export function BubbleMap({
 }: BubbleMapProps) {
   
   if (!data || data.length === 0) {
-    // ... (Loading state/No data message remains the same)
     return (
       <div className={`bg-gray-800 rounded-lg p-6 border border-gray-700 ${className}`}>
         <h3 className="text-lg font-semibold text-white mb-4">{title}</h3>
@@ -66,16 +63,15 @@ export function BubbleMap({
           scrollWheelZoom={true}
           className="h-full z-0" 
         >
-          {/* TileLayer is essential for the map visuals and must be inside MapContainer */}
+          {/* Dark-styled OSM tiles – no API key required */}
           <TileLayer
-            attribution='&copy; <a href="https://stadiamaps.com/">Stadia Maps</a> &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
-            url="https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png"
+            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>'
+            url="https://tiles.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
           />
 
-          {/* Plotting Data Points as Circle Markers */}
           {data.map((point) => (
             <CircleMarker
-              key={point.region}
+              key={`${point.region}-${point.country}`}
               center={[point.latitude, point.longitude]}
               radius={getRadius(point.value)}
               pathOptions={{ 
